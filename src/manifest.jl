@@ -1,8 +1,7 @@
-
-manifest = Dict(
+data_manifest = OrderedDict(
 "IDRC_2002_Pharma_Shootout" =>
-    Dict(
-        "usage" => ["Calibration transfer", "regression"],
+    OrderedDict(
+        "usage" => ["Calibration transfer", "Regression"],
         "keywords" => [ "API", "Pharmaceuticals", "IDRC", "shootout"],
         "property values" => ["weight","hardness","assay"],
         "measurements" => ["NIR"],
@@ -19,8 +18,8 @@ manifest = Dict(
     ),
 
 "Tecator_Meat_Data" =>
-    Dict(
-        "usage" => ["regression"],
+    OrderedDict(
+        "usage" => ["Regression"],
         "keywords" => ["food", "meat"],
         "property values" => ["fat","water","protein"],
         "format" => "csv",
@@ -35,8 +34,8 @@ manifest = Dict(
         "permission" => "Public domain with statement of permission."
     ),
 
-"Cargill_Corn_Data" =>
-    Dict(
+"Cargill_Corn" =>
+    OrderedDict(
         "usage" => ["calibration transfer", "regression"],
         "keywords" => ["food", "corn"],
         "property values" => ["moisture", "oil", "protein", "starch"],
@@ -47,37 +46,37 @@ manifest = Dict(
         "observations" => "80",
         "description" => "This dataset contains 80 NIR measures of corn taken from 3 different instruments( M5, MP5,and MP6 ).
         Measures of NBS glass standards (with replicates) on each instrument are also contained in seperate files.",
-        "URL" => "",
+        "URL" => "https://eigenvector.com/resources/data-sets/",
         "Date Accessed" => "7/3/2020",
         "references" => [""],
         "permission" => "Public domain. Permission to redistribute given to Dr. Casey Kneale granted by Mike Blackburn 6/3/2020"
     ),
 
-"Southwest_Research_Institute_Diesel_Fuels" =>
-    Dict(
-        "usage" => ["regression", "impution", "semisupervised learning"],
-        "keywords" => ["diesel", "fuel", "oil", "gas", "SWRI"],
-        "property values" => ["bp50", "CN", "d4052", "freeze", "total"],
-        "format" => "csv",
-        "measurements" => ["NIR"],
-        "spectral range" => "750-1550nm",
-        "spectral resolution" => "2nm",
-        "observations" => "785",
-        "description" => "Various diesel fuels were measured with a single NIR instrument
-        bp50 - boilingpoint (*C) at 50% recovery(ASTM D 86)
-        CN - Cetane Number (ASTM D 613)
-        d4052 - density, g/mL (15*C ASTM D 4052)
-        freeze - freezing temperature of the fuel, deg C
-        total - total aromatics (mass% ASTM D 5186)
-        visc - viscosity, cSt(40*C)",
-        "URL" => "https://eigenvector.com/wp-content/uploads/2019/06/SWRI_Diesel_NIR_CSV.zip",
-        "Date Accessed" => "7/3/2020",
-        "references" => [""],
-        "permission" => "Public Domain. Collection funded by the US Army."
-    ),
+# "Southwest_Research_Institute_Diesel_Fuels" =>
+#     OrderedDict(
+#         "usage" => ["regression", "impution", "semisupervised learning"],
+#         "keywords" => ["diesel", "fuel", "oil", "gas", "SWRI"],
+#         "property values" => ["bp50", "CN", "d4052", "freeze", "total"],
+#         "format" => "csv",
+#         "measurements" => ["NIR"],
+#         "spectral range" => "750-1550nm",
+#         "spectral resolution" => "2nm",
+#         "observations" => "785",
+#         "description" => "Various diesel fuels were measured with a single NIR instrument
+#         bp50 - boilingpoint (*C) at 50% recovery(ASTM D 86)
+#         CN - Cetane Number (ASTM D 613)
+#         d4052 - density, g/mL (15*C ASTM D 4052)
+#         freeze - freezing temperature of the fuel, deg C
+#         total - total aromatics (mass% ASTM D 5186)
+#         visc - viscosity, cSt(40*C)",
+#         "URL" => "https://eigenvector.com/wp-content/uploads/2019/06/SWRI_Diesel_NIR_CSV.zip",
+#         "Date Accessed" => "7/3/2020",
+#         "references" => [""],
+#         "permission" => "Public Domain. Collection funded by the US Army."
+#     ),
 
 "Fruit_Puree_Adulteration" =>
-    Dict(
+    OrderedDict(
         "usage" => ["Classification", "One class classification"],
         "keywords" => ["food", "fruit", "adulteration", "interferent"],
         "format" => "csv",
@@ -97,7 +96,7 @@ manifest = Dict(
     ),
 
 "Fresh_Meats" =>
-    Dict(
+    OrderedDict(
         "usage" => ["Classification", "Authentication"],
         "keywords" => ["food", "chicken", "pork", "turkey"],
         "format" => "csv",
@@ -111,8 +110,9 @@ manifest = Dict(
         "references" => ["\"Mid-infrared spectroscopy and authenticity problems in selected meats: a feasibility study\" Al-Jowder O, Kemsley E K, Wilson R. H.(1997) Food Chemistry 59 195-20."],
         "permission" => "BBSRC policy on data sharing. Free to analyse and redistribute the data; if the original source is cited."
     ),
+
 "Olive_Oils_Quadrum" =>
-    Dict(
+    OrderedDict(
         "usage" => ["Classification", "Provenance"],
         "keywords" => ["food", "olive", "oil"],
         "format" => "csv",
@@ -131,7 +131,7 @@ manifest = Dict(
     ),
 
 "Instant_Coffee_Quadrum" =>
-    Dict(
+    OrderedDict(
         "usage" => ["Classification", "Provenance", "Fraud"],
         "keywords" => ["food", "instant", "coffee", "arabica", "robusta"],
         "format" => "csv",
@@ -145,10 +145,10 @@ manifest = Dict(
         "references" => [   "\"Discrimination of Arabica and Robusta in Instant Coffee by Fourier Transform Infrared Spectroscopy and Chemometrics\" Briandet R et al, J. Agric. Food Chem., 44 (1),170–174 (1996)",
                             "\"Near- and Mid-Infrared Spectroscopies in Food Authentication: Coffee Varietal Identification\" Downey G. et al, J. Agric. Food Chem. 45 (11) 4357-4361 (1997)."],
         "permission" => "BBSRC policy on data sharing. Free to analyse and redistribute the data; if the original source is cited."
-    )
+    ),
 
 "Raman_PUFA" =>
-    Dict(
+    OrderedDict(
         "usage" => ["Regression"],
         "keywords" => ["food", "polyunsaturated", "PUFA", "fat"],
         "property values" => ["PUFA%emul", "%PUFA"],
@@ -162,10 +162,10 @@ manifest = Dict(
         "Date Accessed" => "7/4/2020",
         "references" => [ "Rimal, Raju; Almøy, Trygve; Sæbø, Solve (2019), \"Data for: Comparison of Multi-response Prediction Methods\", Mendeley Data, v1 http://dx.doi.org/10.17632/3ympjxywdm.1 "],
         "permission" => "CC BY NC 3.0."
-    )
+    ),
 
 "Dough_NIR" =>
-    Dict(
+    OrderedDict(
         "usage" => ["Regression"],
         "keywords" => ["food", "dough"],
         "property values" => ["fat", "sucrose", "flour", "water"],
@@ -180,5 +180,4 @@ manifest = Dict(
         "references" => [ "Rimal, Raju; Almøy, Trygve; Sæbø, Solve (2019), \"Data for: Comparison of Multi-response Prediction Methods\", Mendeley Data, v1 http://dx.doi.org/10.17632/3ympjxywdm.1 "],
         "permission" => "CC BY NC 3.0."
     )
-
 )
