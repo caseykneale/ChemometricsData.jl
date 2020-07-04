@@ -3,6 +3,14 @@ uuid = "fc65c5b3-1e2f-40fc-8189-28dcf66ce270"
 authors = ["caseykneale"]
 version = "0.1.0"
 
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+Crayons = "a8cc5b0e-0ffa-5ad4-8c14-923d3ee1735f"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+MAT = "23992714-dd62-5051-b70f-ba57cb901cac"
+MD5 = "6ac74813-4b46-53a4-afec-0b5dc9d7885c"
+
 [compat]
 julia = "1.4"
 

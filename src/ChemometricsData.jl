@@ -1,5 +1,8 @@
 module ChemometricsData
+    using MD5, JSON3, MAT, CSV, DataFrames, Crayons
 
-# Write your package code here.
+    global DATA_PATH = Base.joinpath( @__DIR__ , "..", data)
+
+    #package currently does nothing...
 
 end
