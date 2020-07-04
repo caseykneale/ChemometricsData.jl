@@ -13,10 +13,11 @@ Chemometrics data is widely dispersed, in a variety of file formats, and arbitra
 # Example Usage
 ## Inspection
 The code base provides some pretty basic commands to let users kind of poke around for data. Maybe you don't know what dataset you want, but you're interested in trying your hand at some chemometrics tasks using mid-infrared spectroscopy. You could do the following:
+![terminal](https://github.com/caseykneale/ChemometricsData.jl/blob/master/images/terminal.png)
 
 ## Loading
 Of course you can easily crack open the datasets and have them ready to use in a few short lines of code. Below is an example workflow of loading in some data, using some metadata, and generating a plot:
-`Julia
+`julia
 quadrum_data = load("Fresh_Meats")
 meta_data = meta("Fresh_Meats")
 
@@ -31,6 +32,7 @@ plot(   spectra |> Matrix |> transpose,
         xticks = ( bin_display_range, bins[bin_display_range] )
 )
 `
+![meat data](https://raw.githubusercontent.com/caseykneale/ChemometricsData.jl/master/images/example_plot.png)
 
 # Liability
 The creators and contributors to this package are not responsible for the outcomes of the use of any data, or code in this repository. This is to be used at ones own risk.
