@@ -17,7 +17,8 @@ The code base provides some pretty basic commands to let users kind of poke arou
 
 ## Loading
 Of course you can easily crack open the datasets and have them ready to use in a few short lines of code. Below is an example workflow of loading in some data, using some metadata, and generating a plot:
-`julia
+
+```julia
 quadrum_data = load("Fresh_Meats")
 meta_data = meta("Fresh_Meats")
 
@@ -31,7 +32,7 @@ plot(   spectra |> Matrix |> transpose,
         xlabel = "Wavenumber", ylabel = "Absorbance",
         xticks = ( bin_display_range, bins[bin_display_range] )
 )
-`
+```
 ![meat data](https://raw.githubusercontent.com/caseykneale/ChemometricsData.jl/master/images/example_plot.png)
 
 # Liability
