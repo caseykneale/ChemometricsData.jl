@@ -134,18 +134,14 @@ module ChemometricsData
                 HTTP.download( online_manifest[dataset_name]["URL"], sug_path )
                 compr_ext = [".zip", ".tar"]
                 files = [ f for f in readdir(sug_path) if f[(end-3):end] in compr_ext ]
-                if length(files) == 0
-                    @warn "Although a file was downloaded the file does not match the stored MD5 checksum. \n Please notify ChemometricsData.jl!"
-                end
+                (length(files) == 0) && @warn "Although a file was downloaded the file does not match the stored MD5 checksum. \n Please notify ChemometricsData.jl!"
                 while length(files) > 0
                     md5chk = [ f for f in files if check_MD5( Base.joinpath(sug_path, f), online_manifest[dataset_name]["MD5"] ) ]
-                    if length( md5chk ) > 0
-                        cd(sug_path) do #thanks Lyndon!
-                            DataDeps.unpack( Base.joinpath( sug_path, first( md5chk )) )
-                        end
-                        #eeek this changes the filesystem don't screw up!
-                        flatten_dir(sug_path)
+                    file_of_interest = first( ( length( md5chk ) > 0 ) ? md5chk : files)
+                    cd(sug_path) do #thanks Lyndon!
+                        DataDeps.unpack( Base.joinpath( sug_path, first( md5chk )) )
                     end
+                    flatten_dir(sug_path) #eeek this changes the filesystem don't screw up!
                     files = [ f for f in readdir(sug_path) if f[(end-3):end] in compr_ext ]
                 end
             else

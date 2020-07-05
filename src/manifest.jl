@@ -191,11 +191,12 @@ data_manifest = OrderedDict(
         "spectral range" => "?-? cm-1",
         "spectral resolution" => "? cm-1",
         "observations" => "?",
-        "description" => " 100 batches of penicillin femernations monitored via Raman spectroscopy.
-        See citation for more details. ",
+        "description" => "100 batches of penicillin femernations monitored via Raman spectroscopy.
+        See references for more details. ",
         "URL" => "https://data.mendeley.com/datasets/pdnjz7zz5x/2",
         "Date Accessed" => "7/4/2020",
-        "references" => [ "Goldrick, Stephen (2019), \"Data for: Modern day monitoring and control challenges outlined on an industrial-scale benchmark fermentation process\", Mendeley Data, v2 http://dx.doi.org/10.17632/pdnjz7zz5x.2"],
-        "permission" => "CC BY NC 4.0."
+        "references" => [ "Goldrick, Stephen (2019), \"Data for: Modern day monitoring and control challenges outlined on an industrial-scale benchmark fermentation process\", Mendeley Data, v2 http://dx.doi.org/10.17632/pdnjz7zz5x.2",
+                        "Goldrick S., Duran-Villalobos C., K. Jankauskas, Lovett D., Farid S. S, Lennox B., (2019) Modern day control challenges for industrial-scale fermentation processes. Computers and Chemical Engineering."],
+        "permission" => "CC BY NC 4.0. Permission given to Dr. Casey Kneale to redistribute via LinkedIn provided a statement is displayed on GitHub."
     )
 )
