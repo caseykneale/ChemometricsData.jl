@@ -179,5 +179,23 @@ data_manifest = OrderedDict(
         "Date Accessed" => "7/4/2020",
         "references" => [ "Rimal, Raju; Almøy, Trygve; Sæbø, Solve (2019), \"Data for: Comparison of Multi-response Prediction Methods\", Mendeley Data, v1 http://dx.doi.org/10.17632/3ympjxywdm.1 "],
         "permission" => "CC BY NC 3.0."
+    ),
+
+"Penicillin_Monitoring" =>
+    OrderedDict(
+        "usage" => ["Regression", "control", "monitoring", "ode"],
+        "keywords" => ["fermentation", "process", "semisynthetic"],
+        "property values" => ["penicillin"],
+        "format" => "csv",
+        "measurements" => ["Raman"],
+        "spectral range" => "?-? cm-1",
+        "spectral resolution" => "? cm-1",
+        "observations" => "?",
+        "description" => " 100 batches of penicillin femernations monitored via Raman spectroscopy.
+        See citation for more details. ",
+        "URL" => "https://data.mendeley.com/datasets/pdnjz7zz5x/2",
+        "Date Accessed" => "7/4/2020",
+        "references" => [ "Goldrick, Stephen (2019), \"Data for: Modern day monitoring and control challenges outlined on an industrial-scale benchmark fermentation process\", Mendeley Data, v2 http://dx.doi.org/10.17632/pdnjz7zz5x.2"],
+        "permission" => "CC BY NC 4.0."
     )
 )
