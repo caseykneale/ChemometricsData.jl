@@ -127,21 +127,22 @@ module ChemometricsData
                 println(Crayon(foreground = :green, italics = true), sug_path)
             elseif haskey( online_manifest, dataset_name )
                 println(Crayon(foreground = :red), "> Creating Directory...")
-                mkdir(sug_path) #works
+                #mkdir(sug_path) #works
                 println(Crayon(foreground = :red), "> Downloading...\n" *
                         "from: ", online_manifest[dataset_name]["URL"], "\n" *
                         "to: ", sug_path)
-                HTTP.download( online_manifest[dataset_name]["URL"], sug_path )
+                #HTTP.download( online_manifest[dataset_name]["URL"], sug_path )
                 compr_ext = [".zip", ".tar"]
                 files = [ f for f in readdir(sug_path) if f[(end-3):end] in compr_ext ]
                 (length(files) == 0) && @warn "Although a file was downloaded the file does not match the stored MD5 checksum. \n Please notify ChemometricsData.jl!"
+                md5chk = [ f for f in files if check_MD5( Base.joinpath(sug_path, f), online_manifest[dataset_name]["MD5"] ) ]
                 while length(files) > 0
-                    md5chk = [ f for f in files if check_MD5( Base.joinpath(sug_path, f), online_manifest[dataset_name]["MD5"] ) ]
-                    file_of_interest = first( ( length( md5chk ) > 0 ) ? md5chk : files)
+                    file_of_interest = first( files )#( length( md5chk ) > 0 ) ? md5chk : files)
                     cd(sug_path) do #thanks Lyndon!
-                        DataDeps.unpack( Base.joinpath( sug_path, first( md5chk )) )
+                        DataDeps.unpack( Base.joinpath( sug_path, first( file_of_interest  )) )
                     end
                     flatten_dir(sug_path) #eeek this changes the filesystem don't screw up!
+                    md5chk = []
                     files = [ f for f in readdir(sug_path) if f[(end-3):end] in compr_ext ]
                 end
             else
