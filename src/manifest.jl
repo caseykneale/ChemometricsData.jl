@@ -20,7 +20,7 @@ data_manifest = OrderedDict(
 "Tecator_Meat_Data" =>
     OrderedDict(
         "usage" => ["Regression"],
-        "keywords" => ["food", "meat"],
+        "keywords" => ["food", "fat", "meat"],
         "property values" => ["fat","water","protein"],
         "format" => "csv",
         "measurements" => ["NIR"],
@@ -167,14 +167,14 @@ data_manifest = OrderedDict(
 "Dough_NIR" =>
     OrderedDict(
         "usage" => ["Regression"],
-        "keywords" => ["food", "dough"],
+        "keywords" => ["food", "dough", "biscuit"],
         "property values" => ["fat", "sucrose", "flour", "water"],
         "format" => "csv",
         "measurements" => ["Raman"],
         "spectral range" => "1000-2498 nm",
         "spectral resolution" => "2.0 nm",
         "observations" => "73",
-        "description" => " see citation for more details. ",
+        "description" => "see citation for more details. ",
         "URL" => "https://data.mendeley.com/datasets/3ympjxywdm/1",
         "Date Accessed" => "7/4/2020",
         "references" => [ "Rimal, Raju; Almøy, Trygve; Sæbø, Solve (2019), \"Data for: Comparison of Multi-response Prediction Methods\", Mendeley Data, v1 http://dx.doi.org/10.17632/3ympjxywdm.1 "],

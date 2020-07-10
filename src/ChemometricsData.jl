@@ -9,6 +9,7 @@ module ChemometricsData
     include("online_manifest.jl")
 
     include("Validation.jl")
+    export flatten_dir
     include("PostTreatment.jl")
     export numeric_columns, nonnumeric_columns
 
@@ -139,7 +140,7 @@ module ChemometricsData
                 while length(files) > 0
                     file_of_interest = first( files )#( length( md5chk ) > 0 ) ? md5chk : files)
                     cd(sug_path) do #thanks Lyndon!
-                        DataDeps.unpack( Base.joinpath( sug_path, first( file_of_interest  )) )
+                        DataDeps.unpack( Base.joinpath( sug_path, file_of_interest ) )
                     end
                     flatten_dir(sug_path) #eeek this changes the filesystem don't screw up!
                     md5chk = []
