@@ -138,7 +138,7 @@ module ChemometricsData
                 (length(files) == 0) && @warn "Although a file was downloaded the file does not match the stored MD5 checksum. \n Please notify ChemometricsData.jl!"
                 md5chk = [ f for f in files if check_MD5( Base.joinpath(sug_path, f), online_manifest[dataset_name]["MD5"] ) ]
                 while length(files) > 0
-                    file_of_interest = ( length( md5chk ) > 0 ) ? md5chk : files)#first( files )#
+                    file_of_interest = first( ( length( md5chk ) > 0 ) ? md5chk : files )#first( files )#
                     cd(sug_path) do #thanks Lyndon!
                         DataDeps.unpack( Base.joinpath( sug_path, file_of_interest ) )
                     end
