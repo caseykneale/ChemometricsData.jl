@@ -1,3 +1,7 @@
+#=
+Metadata for offline datasets included in this respository...
+=#
+
 data_manifest = OrderedDict(
 "IDRC_2002_Pharma_Shootout" =>
     OrderedDict(

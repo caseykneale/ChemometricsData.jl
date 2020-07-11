@@ -11,7 +11,7 @@ module ChemometricsData
     include("Validation.jl")
     export flatten_dir
     include("PostTreatment.jl")
-    export numeric_columns, nonnumeric_columns
+    export isnumeric, numeric_columns, nonnumeric_columns
 
     """
         suggest_a_dataset(dataset_name_lc)
@@ -166,6 +166,11 @@ module ChemometricsData
     end
     export fetchdata
 
+    """
+        meta( dataset_name::String )
+
+    prints the metadata associated with a dataset to the console. If the dataset does not exist it will print suggestions for similarly named datasets or keywords.
+    """
     function meta( dataset_name::String )
         if haskey( data_manifest, dataset_name )
             return data_manifest[ dataset_name ]
@@ -175,7 +180,6 @@ module ChemometricsData
         return nothing
     end
     export meta
-
 
 
 end

@@ -1,3 +1,7 @@
+#=
+Additional information for online access datasets.
+=#
+
 online_manifest = OrderedDict(
     "Penicillin_Monitoring" => OrderedDict(
         "URL" => "https://md-datasets-cache-zipfiles-prod.s3.eu-west-1.amazonaws.com/pdnjz7zz5x-2.zip",

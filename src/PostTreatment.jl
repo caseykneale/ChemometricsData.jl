@@ -25,12 +25,23 @@ returns true if the String `s` contains only numeric characters.
 """
 isnumeric(s::String)::Boolean = tryparse(Float64, s) isa Number
 
+
+"""
+    numeric_column_names( df::DataFrame )
+
+Returns a subset of a dataframe whose column names can be interpretted as numeric values.
+"""
 function numeric_column_names( df::DataFrame )
     cols = String.( names( df ) )
     numer_cols = Symbol.( cols[ isnumeric.( cols ) ] )
     return df[!, numer_cols]
 end
 
+"""
+    nonnumeric_column_names( df::DataFrame )
+
+Returns a subset of a dataframe whose column names can not be interpretted as numeric values.
+"""
 function nonnumeric_column_names( df::DataFrame )
     cols = String.( names( df ) )
     numer_cols = Symbol.( cols[ .!isnumeric.( cols ) ] )
