@@ -17,6 +17,7 @@ ProgressBars = "49802e3a-d2f1-5c88-81d8-b72133a6f568"
 StringDistances = "88034a9c-02f8-509d-84a9-84ec65e18404"
 
 [compat]
+ProgressBars = "0.7"
 HTTP = "0.8"
 DataFrames = "0.21"
 StringDistances = "0.6"
