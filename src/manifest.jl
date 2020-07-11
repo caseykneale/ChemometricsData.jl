@@ -14,13 +14,13 @@ data_manifest = OrderedDict(
         "Date Accessed" => "7/3/2020",
         "references" => ["Gary E. Ritchie, Chairman NIRVWoG and Sr. Scientist, Pharmaceutical Analysis/New Technology, Purdue Pharma L.P., 444 Saw Mill River Road, Ardsley, NY 10502",
                         "http://www.foss.dk/c/p/solutions/products/showprodfamily.asp?prodfamilypkid=98"],
-        "permission" => "Public domain. Given to Dr. Casey Kneale via e-mail in 2018."
+        "permission" => "Public domain. Permission to redistribute given to Dr. Casey Kneale via e-mail in 2018."
     ),
 
 "Tecator_Meat_Data" =>
     OrderedDict(
         "usage" => ["Regression"],
-        "keywords" => ["food", "meat"],
+        "keywords" => ["food", "fat", "meat"],
         "property values" => ["fat","water","protein"],
         "format" => "csv",
         "measurements" => ["NIR"],
@@ -31,7 +31,7 @@ data_manifest = OrderedDict(
         "URL" => "https://www.openml.org/d/505",
         "Date Accessed" => "7/3/2020",
         "references" => [""],
-        "permission" => "Public domain with statement of permission."
+        "permission" => "Public domain with statement of permission from Tecator."
     ),
 
 "Cargill_Corn" =>
@@ -167,18 +167,20 @@ data_manifest = OrderedDict(
 "Dough_NIR" =>
     OrderedDict(
         "usage" => ["Regression"],
-        "keywords" => ["food", "dough"],
+        "keywords" => ["food", "dough", "biscuit"],
         "property values" => ["fat", "sucrose", "flour", "water"],
         "format" => "csv",
         "measurements" => ["Raman"],
         "spectral range" => "1000-2498 nm",
         "spectral resolution" => "2.0 nm",
         "observations" => "73",
-        "description" => " see citation for more details. ",
+        "description" => "see citation for more details. ",
         "URL" => "https://data.mendeley.com/datasets/3ympjxywdm/1",
         "Date Accessed" => "7/4/2020",
-        "references" => [ "Rimal, Raju; Almøy, Trygve; Sæbø, Solve (2019), \"Data for: Comparison of Multi-response Prediction Methods\", Mendeley Data, v1 http://dx.doi.org/10.17632/3ympjxywdm.1 "],
-        "permission" => "CC BY NC 3.0."
+        "references" => [ "Brown, P.J., Fearn, T. and Vannucci, M. (2001). \"Bayesian wavelet regression on curves with application to a spectroscopic calibration problem.\" Journal of the American Statistical Association 96, 398-408.",
+                            "Rimal, Raju; Almøy, Trygve; Sæbø, Solve (2019), \"Data for: Comparison of Multi-response Prediction Methods\", Mendeley Data, v1 http://dx.doi.org/10.17632/3ympjxywdm.1 "],
+        "permission" => "CC BY NC 3.0. Permission to redistribute given to Dr. Casey Kneale by Marina Vannucci.",
+        "Usage Statement" => "Please acknowledge the following paper if utilizing \"Brown, P.J., Fearn, T. and Vannucci, M. (2001). \"Bayesian wavelet regression on curves with application to a spectroscopic calibration problem.\" Journal of the American Statistical Association 96, 398-408."
     ),
 
 "Penicillin_Monitoring" =>
@@ -197,6 +199,7 @@ data_manifest = OrderedDict(
         "Date Accessed" => "7/4/2020",
         "references" => [ "Goldrick, Stephen (2019), \"Data for: Modern day monitoring and control challenges outlined on an industrial-scale benchmark fermentation process\", Mendeley Data, v2 http://dx.doi.org/10.17632/pdnjz7zz5x.2",
                         "Goldrick S., Duran-Villalobos C., K. Jankauskas, Lovett D., Farid S. S, Lennox B., (2019) Modern day control challenges for industrial-scale fermentation processes. Computers and Chemical Engineering."],
-        "permission" => "CC BY NC 4.0. Permission given to Dr. Casey Kneale to redistribute via LinkedIn provided a statement is displayed on GitHub."
+        "permission" => "CC BY NC 4.0. Permission given to Dr. Casey Kneale to redistribute via LinkedIn provided a statement is displayed on GitHub.",
+        "Usage Statement" => "Please acknowledge the following paper if utilizing the spectral data which can be freely downloaded at www.industrialpenicillinsimulation.com. Goldrick S., Duran-Villalobos C., K. Jankauskas, Lovett D., Farid S. S, Lennox B., (2019) Modern day control challenges for industrial-scale fermentation processes. Computers and Chemical Engineering."
     )
 )

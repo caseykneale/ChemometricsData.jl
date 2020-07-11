@@ -35,6 +35,7 @@ version = "0.8.1"
 
 [[ChemometricsData]]
 deps = ["CSV", "Crayons", "DataDeps", "DataFrames", "DataStructures", "HTTP", "JSON3", "MAT", "MD5", "ProgressBars", "StringDistances"]
+
 path = ".."
 uuid = "fc65c5b3-1e2f-40fc-8189-28dcf66ce270"
 version = "0.1.0"

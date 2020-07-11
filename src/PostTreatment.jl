@@ -5,12 +5,13 @@ Takes all files nested in a directory structure and takes them to the root path.
 Warning: this effects your file system. Be careful.
 """
 function flatten_dir(path::String)
-    allfiles = [ joinpath.(root, files) for (root, _, files) in walkdir("/home/caseykneale/.julia/dev/ChemometricsData") ]
+    allfiles = [ joinpath.(root, files) for (root, _, files) in walkdir(path) ]
     file_count = 0
     for src in Iterators.flatten( allfiles )
-        #Base.Filesystem.mv(src, path)
-        println(src)
-        file_count += 1
+        if dirname(src) != path
+            Base.Filesystem.mv(src, Base.Filesystem.joinpath(path, basename(src) ))
+            file_count += 1
+        end
     end
     @warn   "ChemometricsData.jl has flattened $path containing $file_count files. \n" *
             "The directory structure has been preserved."
