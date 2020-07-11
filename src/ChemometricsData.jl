@@ -68,7 +68,11 @@ module ChemometricsData
             if avail == "Offline"
                 println(Crayon(foreground = :green), "> Contains " * string(length(readdir(sug_path))) * " files." )
             else
-                #ToDo : ...this?
+                if isdir(sug_path)
+                    println(Crayon(foreground = :green), "> Contains " * string(length(readdir(sug_path))) * " files." )
+                else
+                    println(Crayon(foreground = :green), "> Dataset must be downloaded with \'fetchdata()\' to use." )
+                end
             end
             for (k,v) in data_manifest[dataset_name]
                 if (v != "") && (v != [""])
@@ -100,9 +104,17 @@ module ChemometricsData
                     data = DataFrame!(CSV.File(Base.joinpath(sug_path, first(assets) ) ))
                 end
                 println(Crayon(foreground = :blue), "Dataset loaded.")
+                if haskey( data_manifest[dataset_name], "Usage Statement" )
+                    #did the author specify a special statement for its usage?
+                    println(Crayon(foreground = :red), data_manifest[dataset_name]["Usage Statement"])
+                else
+                    tmp = "Please honor the dataset author's contribution to our field by acknowledging their work: "
+                    tmp = tmp .* ("\n" .* data_manifest[dataset_name]["references"])
+                    println(Crayon(foreground = :green), first( tmp ) )
+                end
                 return data
             elseif haskey( online_manifest, dataset_name )
-                println(Crayon(foreground = :red), "Dataset must be downloaded with the \"Data()\" function.")
+                println(Crayon(foreground = :red), "Dataset must be downloaded with the \"fetchdata()\" function.")
             else
                 suggest_a_dataset(dataset_name)
             end
@@ -112,11 +124,11 @@ module ChemometricsData
     export load
 
     """
-        download( dataset_name::String )
+        fetchdata( dataset_name::String )
 
     Will download a given dataset using information from `online_manifest.jl`.
     """
-    function download( dataset_name::String )
+    function fetchdata( dataset_name::String )
         dataset_name_lc = lowercase( dataset_name )
         if haskey( data_manifest, dataset_name )
             println(Crayon(foreground = :blue), "Dataset found.")
@@ -152,6 +164,7 @@ module ChemometricsData
         end
         return nothing
     end
+    export fetchdata
 
     function meta( dataset_name::String )
         if haskey( data_manifest, dataset_name )
