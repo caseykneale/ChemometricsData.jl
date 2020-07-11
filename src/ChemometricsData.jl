@@ -11,7 +11,7 @@ module ChemometricsData
     include("Validation.jl")
     export flatten_dir
     include("PostTreatment.jl")
-    export isnumeric, numeric_columns, nonnumeric_columns
+    export numeric_columns, nonnumeric_columns
 
     """
         suggest_a_dataset(dataset_name_lc)
@@ -180,6 +180,5 @@ module ChemometricsData
         return nothing
     end
     export meta
-
 
 end

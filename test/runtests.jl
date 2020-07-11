@@ -2,6 +2,5 @@ using ChemometricsData
 using Test
 
 @testset "ChemometricsData.jl" begin
-    @test isnumeric("123") == true
-    @test isnumeric("1boop23") == false
+    #unfortunately there are no unit tests at this time...
 end

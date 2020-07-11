@@ -8,7 +8,7 @@
 # Overview
 The purpose of this package is to allow a user to have easy access to a consortium of publicly available chemometrics datasets.
 
-Chemometrics data is widely dispersed, in a variety of file formats, and arbitrary conventions. This complicates matters for people wishing simply to load in some data and try new techniques, run a study, or even do a metanalysis. To ameliorate this, the data maintained by or scraped using this package attempts to bundle everything into an intuitive and Julia ready format that is ready for investigation or personal exploration.
+Chemometrics data is widely dispersed, in a variety of file formats, and arbitrary conventions. For people wishing simply to load in some data, learn the field, and try new techniques, run a study, or even do a metanalysis this can complicate matters. To ameliorate this, this package attempts to bundle everything into an intuitive and Julia ready format that is ready for investigation or personal exploration. Data obtained accessible from this API is either curated or obtained via "scraping" from public domain resources.
 
 # Example Usage
 ## Inspection
@@ -35,10 +35,15 @@ plot(   spectra |> Matrix |> transpose,
 ```
 ![meat data](https://raw.githubusercontent.com/caseykneale/ChemometricsData.jl/master/images/example_plot.png)
 
-# Liability
-The creators and contributors to this package are not responsible for the outcomes of the use of any data, or code in this repository. This is to be used at ones own risk.
+# Attribution
+When a dataset is loaded using this package a reminder is displayed for the user to honor it's provenance.
+![attribution](https://raw.githubusercontent.com/caseykneale/ChemometricsData.jl/master/images/attribution.png)
+Authors/owners of datasets can also request custom messages to be displayed. For example, the penicillin dataset will emit the following message on loading: **"Please acknowledge the following paper if utilizing the spectral data which can be freely downloaded at www.industrialpenicillinsimulation.com. Goldrick S., Duran-Villalobos C., K. Jankauskas, Lovett D., Farid S. S, Lennox B., (2019) Modern day control challenges for industrial-scale fermentation processes. Computers and Chemical Engineering."**.
 
-Before redistributing any data accessed via this package (either stored in the git repository or via the packages use) ensure that the permissions for the data allow for this. Just because something is "public domain" does not imply it may be used commercially, or redistributed without author's approval.
+# Liability
+The creators and contributors to this package are not responsible for the outcomes of the use of any data, or code in this repository. This is to be used at ones own risk. Changes to the end users file system may occur with downloaded datasets because this package will unpack them(after checking their MD5 checksum for authenticity).
+
+Before redistributing any data accessed via this package (either stored in the git repository or via the packages use) ensure that the permissions you have obtained for this data allow for this. The contributors to this package can only offer permissions for data they themselves own. Just because something is "public domain" does not imply it may be used commercially, or redistributed without author's approval.
 
 Should also be noted that it is possible errors exist in these datasets due to them being manipulated(transposed, file formats changed, etc) to get them into a common form. Please report any and all issues - it's greatly appreciated.
 
@@ -47,8 +52,17 @@ Should also be noted that it is possible errors exist in these datasets due to t
 There are several ways to contribute to this effort:
  - Make a Pull Request and submit a dataset! This should update the manifest.jl file and provide the data in a plaintext manner in a separate folder.
  - File an issue on the repository and point to where your data is. Give written permission for it's redistribution and some form of proof that you are the legal copyright owner of the data!
+ - Track down Casey Kneale, Ph.D. on social media or ICS-L.
 
-## Restrictions
+## Restrictions for submissions
  - Single datasets should not exceed 10mb. If it does contact us and we will navigate an alternative means of hosting(IE: not github).
- - It is highly preferable that the data is in a tabular file format, such as CSV. Proprietary file formats regularly change: companies go out of business, software gets deprecated, etc.
+ - It is highly preferable that the data is in a tabular nonproprietary file format, such as CSV. Proprietary file formats regularly change: companies go out of business, software gets deprecated, etc.
  - if the content or the origin of the data is suspect, it will either be not accepted, or removed.
+
+# Roadmap
+ - Obtain permissions for as much data as possible
+ - Collect and clean that data to a common and easy file format.
+ - Write functionality for downloading remote datasets that are large.
+ - Write functionality for scraping remote datasets
+ - Extend to an online database.
+ - Write an R/python port for this package so users are free to explore Chemometrics data from free tools of their choice.
