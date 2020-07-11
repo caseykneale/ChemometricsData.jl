@@ -9,6 +9,7 @@ module ChemometricsData
     include("online_manifest.jl")
 
     include("Validation.jl")
+    export flatten_dir
     include("PostTreatment.jl")
     export numeric_columns, nonnumeric_columns
 
@@ -67,7 +68,11 @@ module ChemometricsData
             if avail == "Offline"
                 println(Crayon(foreground = :green), "> Contains " * string(length(readdir(sug_path))) * " files." )
             else
-                #ToDo : ...this?
+                if isdir(sug_path)
+                    println(Crayon(foreground = :green), "> Contains " * string(length(readdir(sug_path))) * " files." )
+                else
+                    println(Crayon(foreground = :green), "> Dataset must be downloaded with \'fetchdata()\' to use." )
+                end
             end
             for (k,v) in data_manifest[dataset_name]
                 if (v != "") && (v != [""])
@@ -99,9 +104,17 @@ module ChemometricsData
                     data = DataFrame!(CSV.File(Base.joinpath(sug_path, first(assets) ) ))
                 end
                 println(Crayon(foreground = :blue), "Dataset loaded.")
+                if haskey( data_manifest[dataset_name], "Usage Statement" )
+                    #did the author specify a special statement for its usage?
+                    println(Crayon(foreground = :red), data_manifest[dataset_name]["Usage Statement"])
+                else
+                    tmp = "Please honor the dataset author's contribution to our field by acknowledging their work: "
+                    tmp = tmp .* ("\n" .* data_manifest[dataset_name]["references"])
+                    println(Crayon(foreground = :green), first( tmp ) )
+                end
                 return data
             elseif haskey( online_manifest, dataset_name )
-                println(Crayon(foreground = :red), "Dataset must be downloaded with the \"Data()\" function.")
+                println(Crayon(foreground = :red), "Dataset must be downloaded with the \"fetchdata()\" function.")
             else
                 suggest_a_dataset(dataset_name)
             end
@@ -111,11 +124,11 @@ module ChemometricsData
     export load
 
     """
-        download( dataset_name::String )
+        fetchdata( dataset_name::String )
 
     Will download a given dataset using information from `online_manifest.jl`.
     """
-    function download( dataset_name::String )
+    function fetchdata( dataset_name::String )
         dataset_name_lc = lowercase( dataset_name )
         if haskey( data_manifest, dataset_name )
             println(Crayon(foreground = :blue), "Dataset found.")
@@ -135,13 +148,14 @@ module ChemometricsData
                 compr_ext = [".zip", ".tar"]
                 files = [ f for f in readdir(sug_path) if f[(end-3):end] in compr_ext ]
                 (length(files) == 0) && @warn "Although a file was downloaded the file does not match the stored MD5 checksum. \n Please notify ChemometricsData.jl!"
+                md5chk = [ f for f in files if check_MD5( Base.joinpath(sug_path, f), online_manifest[dataset_name]["MD5"] ) ]
                 while length(files) > 0
-                    md5chk = [ f for f in files if check_MD5( Base.joinpath(sug_path, f), online_manifest[dataset_name]["MD5"] ) ]
-                    file_of_interest = first( ( length( md5chk ) > 0 ) ? md5chk : files)
+                    file_of_interest = first( ( length( md5chk ) > 0 ) ? md5chk : files )#first( files )#
                     cd(sug_path) do #thanks Lyndon!
-                        DataDeps.unpack( Base.joinpath( sug_path, first( md5chk )) )
+                        DataDeps.unpack( Base.joinpath( sug_path, file_of_interest ) )
                     end
                     flatten_dir(sug_path) #eeek this changes the filesystem don't screw up!
+                    md5chk = []
                     files = [ f for f in readdir(sug_path) if f[(end-3):end] in compr_ext ]
                 end
             else
@@ -150,6 +164,7 @@ module ChemometricsData
         end
         return nothing
     end
+    export fetchdata
 
     function meta( dataset_name::String )
         if haskey( data_manifest, dataset_name )
