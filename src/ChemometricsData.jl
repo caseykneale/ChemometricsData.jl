@@ -99,13 +99,13 @@ module ChemometricsData
             if avail == "Offline"
                 assets = readdir( sug_path )
                 if length( readdir( sug_path ) ) > 1
-                    data = Dict([ f => DataFrame!(CSV.File(Base.joinpath(sug_path, f) )) for f in assets  ])
+                    data = Dict([ f => DataFrame!(CSV.File(Base.joinpath(sug_path, f); threaded=false )) for f in assets  ])
                 else
                     data = DataFrame!(CSV.File(Base.joinpath(sug_path, first(assets) ) ))
                 end
                 println(Crayon(foreground = :blue), "Dataset loaded.")
                 if haskey( data_manifest[dataset_name], "Usage Statement" )
-                    #did the author specify a special statement for its usage?
+                    #did the author specify a special statement for its usage? if so display it!
                     println(Crayon(foreground = :red), data_manifest[dataset_name]["Usage Statement"])
                 else
                     tmp = "Please honor the dataset author's contribution to our field by acknowledging their work: "
