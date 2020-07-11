@@ -36,12 +36,12 @@ plot(   spectra |> Matrix |> transpose,
 ![meat data](https://raw.githubusercontent.com/caseykneale/ChemometricsData.jl/master/images/example_plot.png)
 
 # Attribution
-When a dataset is loaded using this package a reminder is displayed for the user to honor it's provenance.
+When a dataset is loaded using this package a reminder is displayed for the user to honor it's provenance in derivative works and publications,
 ![attribution](https://raw.githubusercontent.com/caseykneale/ChemometricsData.jl/master/images/attribution.png)
-Authors/owners of datasets can also request custom messages to be displayed. For example, the penicillin dataset will emit the following message on loading: **"Please acknowledge the following paper if utilizing the spectral data which can be freely downloaded at www.industrialpenicillinsimulation.com. Goldrick S., Duran-Villalobos C., K. Jankauskas, Lovett D., Farid S. S, Lennox B., (2019) Modern day control challenges for industrial-scale fermentation processes. Computers and Chemical Engineering."**.
+Authors/owners of datasets can also request custom messages to be displayed. For example, the penicillin dataset will emit the following message on loading: *"Please acknowledge the following paper if utilizing the spectral data which can be freely downloaded at www.industrialpenicillinsimulation.com. Goldrick S., Duran-Villalobos C., K. Jankauskas, Lovett D., Farid S. S, Lennox B., (2019) Modern day control challenges for industrial-scale fermentation processes. Computers and Chemical Engineering."*.
 
 # Liability
-The creators and contributors to this package are not responsible for the outcomes of the use of any data, or code in this repository. This is to be used at ones own risk. Changes to the end users file system may occur with downloaded datasets because this package will unpack them(after checking their MD5 checksum for authenticity).
+The creators and contributors to this package are not responsible for the outcomes of the use of any data, or code in this repository. This is to be used at ones own risk. Changes to the end users file system may occur with remotely accessed datasets(obtained with the `fetchdata()` command). This is because this package will unpack them(after checking their MD5 checksum for authenticity). The offline available data should present minimal risks.
 
 Before redistributing any data accessed via this package (either stored in the git repository or via the packages use) ensure that the permissions you have obtained for this data allow for this. The contributors to this package can only offer permissions for data they themselves own. Just because something is "public domain" does not imply it may be used commercially, or redistributed without author's approval.
 
