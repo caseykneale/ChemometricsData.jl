@@ -18,6 +18,14 @@ StringDistances = "88034a9c-02f8-509d-84a9-84ec65e18404"
 
 [compat]
 HTTP = "0.8"
+DataFrames = "0.21"
+StringDistances = "0.6"
+Crayons = "4.0"
+DataDeps = "0.7"
+MD5 = "0.2"
+MAT = "0.8"
+JSON3 = "1.0"
+CSV = "0.7"
 DataStructures = "0.17"
 julia = "1.4"
 
