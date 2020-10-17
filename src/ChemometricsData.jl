@@ -85,6 +85,10 @@ module ChemometricsData
     end
     export describe
 
+    function isCSV(x)
+        return isfile(x) && (lowercase(x[(end-2):end]) == "csv")
+    end
+
     """
         load( dataset_name::String )
 
@@ -99,7 +103,7 @@ module ChemometricsData
             if avail == "Offline"
                 assets = readdir( sug_path )
                 if length( readdir( sug_path ) ) > 1
-                    data = Dict([ f => DataFrame!(CSV.File(Base.joinpath(sug_path, f); threaded=false )) for f in assets  ])
+                    data = Dict([ f => DataFrame!(CSV.File(Base.joinpath(sug_path, f); threaded=false )) for f in assets if isCSV(Base.joinpath(sug_path, f)) ])
                 else
                     data = DataFrame!(CSV.File(Base.joinpath(sug_path, first(assets) ) ))
                 end

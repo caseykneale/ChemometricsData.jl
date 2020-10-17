@@ -2,8 +2,12 @@
 *.jl.cov
 *.jl.mem
 /docs/build/
+/src/try_pen_clean.jl
 *_proto
 SWRI*
 try.jl
 provenance_*
-Penicillin_Monitoring
+/data/Penicillin_Monitoring/
+/data/Penicillin_Corrected/
+/data/Penicillin_Monitoring_Batched
+/data/Penicillin_Monitoring_Batched.zip
